@@ -7,7 +7,9 @@ HuggingFace page: https://huggingface.co/amkhrjee/blackadder-1B-4bit-lora
 A LoRA adapter that turns **Llama-3.2-1B-Instruct** into **Edmund Blackadder** from the BBC series *Blackadder*.
 
 > **You:** Do you have a plan?
-> **Blackadder:** Yes I do. I intend to kill the Duke at once and then destroy any evidence of the crime.
+
+> **Blackadder:** Yes, I do. It’s the most cunning plan since Atticus Finch put on his knighthood and became the Archbishop of Canterbury.
+
 
 ## Model Details
 
@@ -64,7 +66,7 @@ model.generate(
 ```python
 from unsloth import FastModel
 
-model, tokenizer = FastModel.from_pretrained("amkhrjee/blackadder-1B-4bit", load_in_4bit=True)
+model, tokenizer = FastModel.from_pretrained("amkhrjee/blackadder-1B-4bit-lora", load_in_4bit=True)
 ```
 
 ## Training Details
