@@ -1,27 +1,8 @@
----
-base_model: unsloth/llama-3.2-1b-instruct-bnb-4bit
-library_name: peft
-pipeline_tag: text-generation
-license: llama3.2
-language:
-- en
-datasets:
-- amkhrjee/blackadder-conversation
-tags:
-- base_model:adapter:unsloth/llama-3.2-1b-instruct-bnb-4bit
-- lora
-- sft
-- trl
-- unsloth
-- peft
-- roleplay
-- character
-- blackadder
----
+## blackadder-1B-4bit-lora 
 
-# Blackadder-1B 
+<img src="https://i.pinimg.com/736x/f9/1e/49/f91e497cff77c206c5ab68f25b092467.jpg" alt="Blackadder" width="300">
 
-<img src="https://i.pinimg.com/736x/f9/1e/49/f91e497cff77c206c5ab68f25b092467.jpg" alt="Blackadder" width="400">
+HuggingFace page: https://huggingface.co/amkhrjee/blackadder-1B-4bit-lora
 
 A LoRA adapter that turns **Llama-3.2-1B-Instruct** into **Edmund Blackadder** from the BBC series *Blackadder*.
 
@@ -30,7 +11,6 @@ A LoRA adapter that turns **Llama-3.2-1B-Instruct** into **Edmund Blackadder** f
 
 ## Model Details
 
-- **Developed by:** [amkhrjee](https://huggingface.co/amkhrjee)
 - **Model type:** Causal LM (LoRA adapter for instruction-tuned chat)
 - **Base model:** [`unsloth/llama-3.2-1b-instruct-bnb-4bit`](https://huggingface.co/unsloth/llama-3.2-1b-instruct-bnb-4bit) (Llama 3.2 1B Instruct)
 - **Language:** English
