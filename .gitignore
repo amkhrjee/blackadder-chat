@@ -10,3 +10,8 @@ wheels/
 .venv
 *.txt
 *.jsonl
+unsloth*
+.claude/
+.agents/
+llama.cpp 
+blackadder-*

@@ -170,9 +170,14 @@ def merge_runs(utterances: list[dict]) -> list[dict]:
     return merged
 
 
-def build_pairs(utterances: list[dict]) -> list[list[dict]]:
-    """Pair each Edmund line with the preceding other-character line."""
-    pairs: list[list[dict]] = []
+def build_pairs(utterances: list[dict]) -> list[dict]:
+    """Pair each Edmund line with the preceding other-character line.
+
+    Each example is wrapped as ``{"messages": [...]}`` (a JSON object per
+    line) so the Hugging Face datasets loader and viewer parse it -- a bare
+    JSON array per line is rejected with a "Trailing data" error.
+    """
+    pairs: list[dict] = []
     for i, utt in enumerate(utterances):
         if not utt["is_edmund"] or i == 0:
             continue
@@ -180,10 +185,12 @@ def build_pairs(utterances: list[dict]) -> list[list[dict]]:
         if prev["is_edmund"] or not prev["text"] or not utt["text"]:
             continue
         pairs.append(
-            [
-                {"role": "user", "content": prev["text"]},
-                {"role": "assistant", "content": utt["text"]},
-            ]
+            {
+                "messages": [
+                    {"role": "user", "content": prev["text"]},
+                    {"role": "assistant", "content": utt["text"]},
+                ]
+            }
         )
     return pairs
 
@@ -193,7 +200,7 @@ def main() -> None:
     if not season_files:
         raise SystemExit(f"No season_*.txt files found in {DATA_DIR}")
 
-    all_pairs: list[list[dict]] = []
+    all_pairs: list[dict] = []
     for path in season_files:
         season_match = re.search(r"season_(\d+)", path.name)
         season = int(season_match.group(1)) if season_match else 0

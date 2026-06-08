@@ -46,14 +46,14 @@ python data.py    # run from the repo root; writes data/blackadder.jsonl
 ## Format
 
 `blackadder.jsonl` is [JSON Lines](https://jsonlines.org/): one example per
-line. Each line is a JSON array of two messages — the line spoken just before
-Edmund (`user`), and Edmund's response (`assistant`):
+line. Each line is a JSON object with a `messages` list of two turns — the
+line spoken just before Edmund (`user`), and Edmund's response (`assistant`):
 
 ```json
-[
+{"messages": [
   {"role": "user", "content": "Edna, fight you with us on the morrow?"},
   {"role": "assistant", "content": "Er, oh goodness, no! No, I thought I'd fight with the enemy!"}
-]
+]}
 ```
 
 ### Statistics
